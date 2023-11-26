@@ -1,0 +1,10 @@
+{
+	"extends":
+	[
+		"@isnotdefined/eslint-config/common"
+	],
+	"parserOptions":
+	{
+		"ecmaVersion": 2020
+	}
+}

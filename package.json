@@ -1,0 +1,16 @@
+{
+	"name": "facefusion-pinokio",
+	"description": "Next generation face swapper and enhancer",
+	"version": "2.0.0",
+	"license": "MIT",
+	"devDependencies":
+	{
+		"@isnotdefined/eslint-config": "9.8.0",
+		"eslint": "8.54.0"
+	},
+	"scripts":
+	{
+		"lint": "eslint . --ext=.js",
+		"fix": "npm run lint -- --fix"
+	}
+}
