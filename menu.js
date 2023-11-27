@@ -64,7 +64,7 @@ module.exports = async kernel =>
 				}
 			},
 			{
-				icon: 'fa-solid fa-camera,
+				icon: 'fa-solid fa-camera',
 				text: 'Launch webcam',
 				href: 'start.js',
 				params:
