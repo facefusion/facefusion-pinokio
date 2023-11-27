@@ -42,7 +42,7 @@ module.exports = async kernel =>
 		menu =
 		[
 			{
-				icon: 'fa-solid fa-photo-film',
+				icon: 'fa-solid fa-power-off',
 				text: 'Launch default',
 				href: 'start.js',
 				params:
@@ -64,7 +64,7 @@ module.exports = async kernel =>
 				}
 			},
 			{
-				icon: 'fa-solid fa-webcam',
+				icon: 'fa-solid fa-camera,
 				text: 'Launch webcam',
 				href: 'start.js',
 				params:
