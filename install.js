@@ -14,9 +14,16 @@ function install(kernel)
 	{
 		return 'python install.py --onnxruntime cuda --torch cuda';
 	}
-	if (platform === 'linux' && gpu === 'amd')
+	if (gpu === 'amd')
 	{
-		return 'python install.py --onnxruntime directml --torch rocm';
+		if (platform === 'linux')
+		{
+			return 'python install.py --onnxruntime directml --torch rocm';
+		}
+		if (platform === 'win32')
+		{
+			return 'python install.py --onnxruntime directml --torch cpu';
+		}
 	}
 	return 'python install.py --onnxruntime default --torch cpu';
 }
