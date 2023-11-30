@@ -10,13 +10,13 @@ function install(kernel)
 		}
 		return 'python install.py --onnxruntime default --torch default';
 	}
-	if (gpu === 'nvidia')
+	if ([ 'linux', 'win32' ].includes(platform) && gpu === 'nvidia')
 	{
 		return 'python install.py --onnxruntime cuda --torch cuda';
 	}
-	if (gpu === 'amd')
+	if (platform === 'linux' && gpu === 'amd')
 	{
-		return 'python install.py --onnxruntime default --torch cpu';
+		return 'python install.py --onnxruntime directml --torch rocm';
 	}
 	return 'python install.py --onnxruntime default --torch cpu';
 }
@@ -31,14 +31,9 @@ module.exports = async kernel =>
 				type: 'conda',
 				name:
 				[
-					'cmake',
 					'ffmpeg'
 				],
 				args: '-c conda-forge'
-			},
-			{
-				gpu: 'nvidia',
-				name: 'cuda'
 			}
 		],
 		run:
