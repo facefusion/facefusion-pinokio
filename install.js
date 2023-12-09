@@ -59,7 +59,7 @@ module.exports = async kernel =>
 					env:
 					{
 						PYTHONNOUSERSITE: 'True'
-                    },
+					},
 					message: install(kernel),
 					path: 'facefusion',
 					venv: 'env'
