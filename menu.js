@@ -16,6 +16,12 @@ module.exports = async kernel =>
         menu =
         [
           {
+            icon: 'fa-solid fa-rocket',
+            text: 'Open session',
+            href: memory.url,
+            target: '_blank'
+          },
+          {
             icon: 'fa-solid fa-desktop',
             text: 'Server (' + memory.mode + ')',
             href: 'start.js',
@@ -23,12 +29,6 @@ module.exports = async kernel =>
             {
               fullscreen: true
             }
-          },
-          {
-            icon: 'fa-solid fa-rocket',
-            text: 'Open session',
-            href: memory.url,
-            target: '_blank'
           }
         ];
       }
