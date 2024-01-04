@@ -16,12 +16,8 @@ module.exports = async kernel =>
         menu =
         [
           {
-            icon: 'fa-solid fa-spin fa-circle-notch',
-            text: 'Running ' + memory.mode
-          },
-          {
             icon: 'fa-solid fa-desktop',
-            text: 'Server',
+            text: 'Server (' + memory.mode + ')',
             href: 'start.js',
             params:
             {
