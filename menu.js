@@ -84,7 +84,11 @@ module.exports = async kernel =>
             fullscreen: true,
             mode: 'Webcam'
           }
-        },
+        }
+      ];
+    }
+    menu = menu.concat(
+      [
         {
           icon: 'fa-solid fa-rotate',
           text: 'Update',
@@ -94,30 +98,28 @@ module.exports = async kernel =>
             run: true,
             fullscreen: true
           }
+        },
+        {
+          icon: 'fa-solid fa-plug',
+          text: 'Install',
+          href: 'install.js',
+          params:
+          {
+            run: true,
+            fullscreen: true
+          }
+        },
+        {
+          icon: 'fa-solid fa-plug',
+          text: 'Factory Reset',
+          href: 'reset.js',
+          params:
+          {
+            run: true,
+            fullscreen: true
+          }
         }
-      ];
-    }
-    menu.push(
-			{
-				icon: 'fa-solid fa-plug',
-				text: 'Install',
-				href: 'install.js',
-				params:
-				{
-					run: true,
-					fullscreen: true
-				}
-			},
-			{
-				icon: 'fa-solid fa-plug',
-				text: 'Factory Reset',
-				href: 'reset.js',
-				params:
-				{
-					run: true,
-					fullscreen: true
-				}
-			}
+      ]
     )
 	}
 	else
