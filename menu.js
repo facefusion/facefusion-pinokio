@@ -110,7 +110,7 @@ module.exports = async kernel =>
           }
         },
         {
-          icon: 'fa-solid fa-plug',
+          icon: 'fa-regular fa-circle-mark',
           text: 'Factory Reset',
           href: 'reset.js',
           params:
