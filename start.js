@@ -38,7 +38,6 @@ module.exports = () =>
 				method: 'local.set',
 				params:
 				{
-          mode: '{{local.mode}}',
           url: '{{input.stdout.match(/(http:\\S+)/gi)[0]}}'
 				}
 			},
