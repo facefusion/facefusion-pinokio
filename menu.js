@@ -94,6 +94,28 @@ module.exports = async kernel =>
 				}
 			}
 		];
+    menu.push(
+			{
+				icon: 'fa-solid fa-plug',
+				text: 'Reinstall',
+				href: 'install.js',
+				params:
+				{
+					run: true,
+					fullscreen: true
+				}
+			},
+			{
+				icon: 'fa-solid fa-plug',
+				text: 'Factory Reset",
+				href: 'reset.js',
+				params:
+				{
+					run: true,
+					fullscreen: true
+				}
+			}
+    )
 	}
 	else
 	{
