@@ -90,39 +90,38 @@ module.exports = async kernel =>
 			];
 		}
 		menu = menu.concat(
-			[
+		[
+			{
+				icon: 'fa-solid fa-rotate',
+				text: 'Update',
+				href: 'update.js',
+				params:
 				{
-					icon: 'fa-solid fa-rotate',
-					text: 'Update',
-					href: 'update.js',
-					params:
-					{
-						run: true,
-						fullscreen: true
-					}
-				},
-				{
-					icon: 'fa-solid fa-plug',
-					text: 'Install',
-					href: 'install.js',
-					params:
-					{
-						run: true,
-						fullscreen: true
-					}
-				},
-				{
-					icon: 'fa-regular fa-circle-xmark',
-					text: 'Factory Reset',
-					href: 'reset.js',
-					params:
-					{
-						run: true,
-						fullscreen: true
-					}
+					run: true,
+					fullscreen: true
 				}
-			]
-		);
+			},
+			{
+				icon: 'fa-solid fa-plug',
+				text: 'Install',
+				href: 'install.js',
+				params:
+				{
+					run: true,
+					fullscreen: true
+				}
+			},
+			{
+				icon: 'fa-regular fa-circle-xmark',
+				text: 'Factory reset',
+				href: 'reset.js',
+				params:
+				{
+					run: true,
+					fullscreen: true
+				}
+			}
+		]);
 	}
 	else
 	{
