@@ -35,21 +35,17 @@ module.exports = () =>
 				}
 			},
 			{
-				method: 'self.set',
+				method: 'local.set',
 				params:
 				{
-					'session.json':
-					{
-						mode: '{{local.mode}}',
-						url: '{{input.stdout.match(/(http:\\S+)/gi)[0]}}'
-					}
+          url: '{{input.stdout.match(/(http:\\S+)/gi)[0]}}'
 				}
 			},
 			{
 				method: 'browser.open',
 				params:
 				{
-					uri: '{{self.session.url}}',
+					uri: '{{local.url}}',
 					target: '_blank'
 				}
 			}
