@@ -10,7 +10,7 @@ module.exports = async kernel =>
 	{
 		if (kernel.running(__dirname, 'start.js'))
 		{
-      const memory = kernel.memory.local[path.resolve(__dirname, "start.json")]
+      const memory = kernel.memory.local[path.resolve(__dirname, "start.js")]
       if (memory && memory.url && memory.mode)
       {
         menu =
