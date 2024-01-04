@@ -9,36 +9,48 @@ module.exports = async kernel =>
 	{
 		if (kernel.running(__dirname, 'start.js'))
 		{
-			const session = await kernel.require(__dirname, 'session.json');
-
-			menu =
-			[
-				{
-					icon: 'fa-solid fa-spin fa-circle-notch',
-					text: 'Running ' + session.mode
-				},
-				{
-					icon: 'fa-solid fa-desktop',
-					text: 'Server',
-					href: 'start.js',
-					params:
-					{
-						fullscreen: true
-					}
-				}
-			];
-			if (session && session.url)
-			{
-				menu.push(
-				{
-					icon: 'fa-solid fa-rocket',
-					text: 'Open session',
-					href: session.url,
-					target: '_blank'
-				});
-			}
-			return menu;
-		}
+      const memory = kernel.memory.local[path.resolve(__dirname, "start.json")]
+      if (memory && memory.url && memory.mode)
+      {
+        menu =
+        [
+          {
+            icon: 'fa-solid fa-spin fa-circle-notch',
+            text: 'Running ' + memory.mode
+          },
+          {
+            icon: 'fa-solid fa-desktop',
+            text: 'Server',
+            href: 'start.js',
+            params:
+            {
+              fullscreen: true
+            }
+          },
+          {
+            icon: 'fa-solid fa-rocket',
+            text: 'Open session',
+            href: memory.url,
+            target: '_blank'
+          }
+        ];
+      }
+      else
+      {
+        menu =
+        [
+          {
+            icon: 'fa-solid fa-desktop',
+            text: 'Server',
+            href: 'start.js',
+            params:
+            {
+              fullscreen: true
+            }
+          }
+        ];
+      }
+    }
 		menu =
 		[
 			{
