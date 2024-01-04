@@ -1,3 +1,4 @@
+const path = require('path')
 module.exports = async kernel =>
 {
 	const hasEnv = await kernel.exists(__dirname, 'facefusion', 'env');
