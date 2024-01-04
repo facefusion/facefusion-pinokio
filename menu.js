@@ -48,56 +48,59 @@ module.exports = async kernel =>
         ];
       }
     }
-		menu =
-		[
-			{
-				icon: 'fa-solid fa-power-off',
-				text: 'Launch default',
-				href: 'start.js',
-				params:
-				{
-					run: true,
-					fullscreen: true,
-					mode: 'Default'
-				}
-			},
-			{
-				icon: 'fa-solid fa-gauge',
-				text: 'Launch benchmark',
-				href: 'start.js',
-				params:
-				{
-					run: true,
-					fullscreen: true,
-					mode: 'Benchmark'
-				}
-			},
-			{
-				icon: 'fa-solid fa-camera',
-				text: 'Launch webcam',
-				href: 'start.js',
-				params:
-				{
-					run: true,
-					fullscreen: true,
-					mode: 'Webcam'
-				}
-			},
-			{
-				icon: 'fa-solid fa-rotate',
-				text: 'Update',
-				href: 'update.js',
-				params:
-				{
-					run: true,
-					fullscreen: true
-				}
-			}
-		];
+    else
+    {
+      menu =
+      [
+        {
+          icon: 'fa-solid fa-power-off',
+          text: 'Launch default',
+          href: 'start.js',
+          params:
+          {
+            run: true,
+            fullscreen: true,
+            mode: 'Default'
+          }
+        },
+        {
+          icon: 'fa-solid fa-gauge',
+          text: 'Launch benchmark',
+          href: 'start.js',
+          params:
+          {
+            run: true,
+            fullscreen: true,
+            mode: 'Benchmark'
+          }
+        },
+        {
+          icon: 'fa-solid fa-camera',
+          text: 'Launch webcam',
+          href: 'start.js',
+          params:
+          {
+            run: true,
+            fullscreen: true,
+            mode: 'Webcam'
+          }
+        },
+        {
+          icon: 'fa-solid fa-rotate',
+          text: 'Update',
+          href: 'update.js',
+          params:
+          {
+            run: true,
+            fullscreen: true
+          }
+        }
+      ];
+    }
     menu.push(
 			{
 				icon: 'fa-solid fa-plug',
-				text: 'Reinstall',
+				text: 'Install',
 				href: 'install.js',
 				params:
 				{
