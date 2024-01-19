@@ -15,7 +15,7 @@ module.exports = () =>
 				method: 'shell.run',
 				params:
 				{
-					message: 'git pull origin 2.1.3',
+					message: 'git pull origin 2.2.0',
 					path: 'facefusion'
 				}
 			}
