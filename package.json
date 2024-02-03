@@ -1,7 +1,7 @@
 {
 	"name": "facefusion-pinokio",
 	"description": "Next generation face swapper and enhancer",
-	"version": "2.2.1",
+	"version": "next",
 	"license": "MIT",
 	"devDependencies":
 	{
