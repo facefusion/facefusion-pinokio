@@ -1,6 +1,6 @@
 function install(kernel)
 {
-	const { platform, arch, gpu } = kernel;
+	const { platform, gpu } = kernel;
 
 	if (platform === 'darwin')
 	{
