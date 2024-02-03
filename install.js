@@ -4,10 +4,6 @@ function install(kernel)
 
 	if (platform === 'darwin')
 	{
-		if (arch === 'arm64')
-		{
-			return 'python install.py --onnxruntime coreml-silicon --torch default --skip-venv';
-		}
 		return 'python install.py --onnxruntime default --torch default --skip-venv';
 	}
 	if ([ 'linux', 'win32' ].includes(platform) && gpu === 'nvidia')
