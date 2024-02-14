@@ -1,24 +1,20 @@
 function install(kernel)
 {
-	const { platform, arch, gpu } = kernel;
+	const { platform, gpu } = kernel;
 
 	if (platform === 'darwin')
 	{
-		if (arch === 'arm64')
-		{
-			return 'python install.py --onnxruntime coreml-silicon --torch default --skip-venv';
-		}
 		return 'python install.py --onnxruntime default --torch default --skip-venv';
 	}
 	if ([ 'linux', 'win32' ].includes(platform) && gpu === 'nvidia')
 	{
-		return 'python install.py --onnxruntime cuda --torch cuda --skip-venv';
+		return 'python install.py --onnxruntime cuda-11.8 --torch cuda-11.8 --skip-venv';
 	}
 	if (gpu === 'amd')
 	{
 		if (platform === 'linux')
 		{
-			return 'python install.py --onnxruntime rocm --torch rocm --skip-venv';
+			return 'python install.py --onnxruntime rocm-5.4.2 --torch rocm-5.4.2 --skip-venv';
 		}
 		if (platform === 'win32')
 		{
@@ -49,7 +45,7 @@ module.exports = async kernel =>
 				method: 'shell.run',
 				params:
 				{
-					message: 'git clone https://github.com/facefusion/facefusion --branch 2.2.1 --single-branch'
+					message: 'git clone https://github.com/facefusion/facefusion --branch 2.3.0 --single-branch'
 				}
 			},
 			{
