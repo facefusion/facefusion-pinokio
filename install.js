@@ -4,24 +4,24 @@ function install(kernel)
 
 	if (platform === 'darwin')
 	{
-		return 'python install.py --onnxruntime default --torch default --skip-venv';
+		return 'python install.py --onnxruntime default --skip-venv';
 	}
 	if ([ 'linux', 'win32' ].includes(platform) && gpu === 'nvidia')
 	{
-		return 'python install.py --onnxruntime cuda-11.8 --torch cuda-11.8 --skip-venv';
+		return 'python install.py --onnxruntime cuda-11.8 --skip-venv';
 	}
 	if (gpu === 'amd')
 	{
 		if (platform === 'linux')
 		{
-			return 'python install.py --onnxruntime rocm-5.4.2 --torch rocm-5.4.2 --skip-venv';
+			return 'python install.py --onnxruntime rocm-5.4.2 --skip-venv';
 		}
 		if (platform === 'win32')
 		{
-			return 'python install.py --onnxruntime directml --torch cpu --skip-venv';
+			return 'python install.py --onnxruntime directml --skip-venv';
 		}
 	}
-	return 'python install.py --onnxruntime default --torch cpu --skip-venv';
+	return 'python install.py --onnxruntime default --skip-venv';
 }
 
 module.exports = async kernel =>
