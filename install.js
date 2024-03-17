@@ -28,19 +28,23 @@ module.exports = async kernel =>
 {
 	const config =
 	{
-		requires:
-		[
-			{
-				type: 'conda',
-				name:
-				[
-					'ffmpeg'
-				],
-				args: '-c conda-forge'
-			}
-		],
 		run:
 		[
+			{
+				when: '{{ gpu === "nvidia" }}',
+				method: 'shell.run',
+				params:
+				{
+					message:
+					[
+						'conda install -y --override-channels cudatoolkit 11.8.0 cudnn 8.4.1.50 -c conda-forge'
+					],
+					conda:
+					{
+						name: '{{ gpu === "nvidia" ? "cu118" : "base" }}'
+					}
+				}
+			},
 			{
 				method: 'shell.run',
 				params:
@@ -52,13 +56,17 @@ module.exports = async kernel =>
 				method: 'shell.run',
 				params:
 				{
+					message: install(kernel),
+					path: 'facefusion',
+					venv: 'env',
 					env:
 					{
 						PYTHONNOUSERSITE: 'True'
 					},
-					message: install(kernel),
-					path: 'facefusion',
-					venv: 'env'
+					conda:
+					{
+						name: '{{ gpu === "nvidia" ? "cu118" : "base" }}'
+					}
 				}
 			},
 			{
@@ -66,7 +74,7 @@ module.exports = async kernel =>
 				params:
 				{
 					title: 'Install complete',
-					description: 'Go back to the dashboard and launch the application.'
+					description: 'Go back to the dashboard to launch the application.'
 				}
 			},
 			{
