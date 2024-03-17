@@ -22,7 +22,7 @@ module.exports = () =>
 				method: 'shell.run',
 				params:
 				{
-					message: '{{ self.cmd[local.mode ]}}',
+					message: '{{ self.cmd[local.mode] }}',
 					path: 'facefusion',
 					venv: 'env',
 					conda:
