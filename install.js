@@ -37,7 +37,7 @@ module.exports = async kernel =>
 				{
 					message:
 					[
-						'conda install -y --override-channels cudatoolkit 11.8.0 cudnn 8.4.1.50 -c conda-forge'
+						'conda install -y --override-channels cudatoolkit=11.8.0 cudnn=8.4.1.50 -c conda-forge'
 					],
 					conda:
 					{
