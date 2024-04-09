@@ -24,10 +24,9 @@ module.exports = () =>
 				{
 					message: '{{ self.cmd[local.mode] }}',
 					path: 'facefusion',
-					venv: 'env',
 					conda:
 					{
-						name: '{{ gpu === "nvidia" ? "cu118" : "base" }}'
+						name: 'facefusion-pinokio'
 					},
 					on:
 					[

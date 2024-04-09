@@ -2,12 +2,11 @@ const path = require('path');
 
 module.exports = async kernel =>
 {
-	const hasEnv = await kernel.exists(__dirname, 'facefusion', 'env');
 	const hasRepo = await kernel.exists(__dirname, 'facefusion');
 
 	let menu = [];
 
-	if (hasEnv && hasRepo)
+	if (hasRepo)
 	{
 		if (kernel.running(__dirname, 'start.js'))
 		{

@@ -41,7 +41,7 @@ module.exports = async kernel =>
 					],
 					conda:
 					{
-						name: '{{ gpu === "nvidia" ? "cu118" : "base" }}'
+						name: 'facefusion-pinokio'
 					}
 				}
 			},
@@ -49,7 +49,7 @@ module.exports = async kernel =>
 				method: 'shell.run',
 				params:
 				{
-					message: 'git clone https://github.com/facefusion/facefusion --branch 2.4.1 --single-branch'
+					message: 'git clone https://github.com/facefusion/facefusion --branch 2.5.0 --single-branch'
 				}
 			},
 			{
@@ -58,14 +58,13 @@ module.exports = async kernel =>
 				{
 					message: install(kernel),
 					path: 'facefusion',
-					venv: 'env',
 					env:
 					{
 						PYTHONNOUSERSITE: 'True'
 					},
 					conda:
 					{
-						name: '{{ gpu === "nvidia" ? "cu118" : "base" }}'
+						name: 'facefusion-pinokio'
 					}
 				}
 			},
