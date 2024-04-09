@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = async kernel =>
 {
-	const hasInstall = await kernel.exists(__dirname, 'facefusion', '.assets');
+	const hasInstall = await kernel.exists(__dirname, 'facefusion');
 
 	let menu = [];
 
