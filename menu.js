@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = async kernel =>
 {
-	const hasInstall = await kernel.exists(__dirname, 'facefusion');
+	const hasInstall = await kernel.exists(__dirname, 'facefusion') && !await kernel.running(__dirname, 'install.js')
 
 	let menu = [];
 
