@@ -49,7 +49,7 @@ module.exports = async kernel =>
 					},
 					conda:
 					{
-						name: 'facefusion-pinokio'
+						name: 'facefusion'
 					}
 				}
 			},

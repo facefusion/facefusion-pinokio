@@ -26,7 +26,7 @@ module.exports = () =>
 					path: 'facefusion',
 					conda:
 					{
-						name: 'facefusion-pinokio'
+						name: 'facefusion'
 					},
 					on:
 					[
