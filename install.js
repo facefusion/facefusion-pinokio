@@ -4,24 +4,24 @@ function install(kernel)
 
 	if (platform === 'darwin')
 	{
-		return 'python install.py --onnxruntime default --skip-venv';
+		return 'python install.py --onnxruntime default';
 	}
 	if ([ 'linux', 'win32' ].includes(platform) && gpu === 'nvidia')
 	{
-		return 'python install.py --onnxruntime cuda-11.8 --skip-venv';
+		return 'python install.py --onnxruntime cuda-12.2';
 	}
 	if (gpu === 'amd')
 	{
 		if (platform === 'linux')
 		{
-			return 'python install.py --onnxruntime rocm-5.4.2 --skip-venv';
+			return 'python install.py --onnxruntime rocm-5.4.2';
 		}
 		if (platform === 'win32')
 		{
-			return 'python install.py --onnxruntime directml --skip-venv';
+			return 'python install.py --onnxruntime directml';
 		}
 	}
-	return 'python install.py --onnxruntime default --skip-venv';
+	return 'python install.py --onnxruntime default';
 }
 
 module.exports = async kernel =>
@@ -30,21 +30,6 @@ module.exports = async kernel =>
 	{
 		run:
 		[
-			{
-				when: '{{ gpu === "nvidia" }}',
-				method: 'shell.run',
-				params:
-				{
-					message:
-					[
-						'conda install cudatoolkit=11.8 cudnn=8.9.2.26 -y'
-					],
-					conda:
-					{
-						name: 'facefusion-pinokio'
-					}
-				}
-			},
 			{
 				method: 'shell.run',
 				params:
