@@ -8,7 +8,7 @@ function install(kernel)
 	}
 	if ([ 'linux', 'win32' ].includes(platform) && gpu === 'nvidia')
 	{
-		return 'python install.py --onnxruntime cuda-12.2';
+		return 'python install.py --onnxruntime cuda-11.8';
 	}
 	if (gpu === 'amd')
 	{
@@ -35,6 +35,17 @@ module.exports = async kernel =>
 				params:
 				{
 					message: 'git clone https://github.com/facefusion/facefusion --branch 2.5.2 --single-branch'
+				}
+			},
+			{
+				method: 'shell.run',
+				params:
+				{
+					message: 'conda install cudatoolkit=11.8 cudnn=8.9.2.26 conda-forge::gputil=1.4.0 --yes',
+					conda:
+					{
+						name: 'facefusion'
+					}
 				}
 			},
 			{
