@@ -38,6 +38,7 @@ module.exports = async kernel =>
 				}
 			},
 			{
+				when: '{{ gpu === "nvidia" }}',
 				method: 'shell.run',
 				params:
 				{
