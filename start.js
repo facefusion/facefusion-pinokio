@@ -51,7 +51,14 @@ module.exports = () =>
 					uri: '{{ local.url }}',
 					target: '_blank'
 				}
-			}
+			},
+            {
+              method: "proxy.start",
+              params: {
+                uri: '{{local.url}}',
+                name: 'Local Sharing'
+              }
+            }
 		]
 	};
 
