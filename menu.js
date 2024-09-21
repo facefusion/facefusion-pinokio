@@ -37,7 +37,7 @@ module.exports = async kernel =>
 				params:
 				{
 					run: true,
-					fullscreen: true,
+					fullscreen: true
 				}
 			});
 		}
@@ -49,7 +49,7 @@ module.exports = async kernel =>
 			params:
 			{
 				run: true,
-				fullscreen: true,
+				fullscreen: true
 			}
 		});
 	}
