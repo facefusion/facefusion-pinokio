@@ -2,141 +2,100 @@ const path = require('path');
 
 module.exports = async kernel =>
 {
-	const hasInstall = await kernel.exists(__dirname, 'facefusion') && !await kernel.running(__dirname, 'install.js');
+	const menu = [];
 
-	let menu = [];
-
-	if (hasInstall)
+	if (!await kernel.exists(__dirname, 'facefusion', '.git'))
 	{
-		if (kernel.running(__dirname, 'start.js'))
+		menu.push(
 		{
-			const memory = kernel.memory.local[path.resolve(__dirname, 'start.js')];
+			icon: 'fa-solid fa-plug',
+			text: 'Install',
+			href: 'install.js',
+			params:
+			{
+				run: true,
+				fullscreen: true
+			}
+		});
 
-			if (memory && memory.url && memory.mode)
-			{
-				menu =
-				[
-					{
-						icon: 'fa-solid fa-rocket',
-						text: 'Open session',
-						href: memory.url,
-						target: '_blank'
-					},
-					{
-						icon: 'fa-solid fa-desktop',
-						text: 'Server (' + memory.mode + ')',
-						href: 'start.js',
-						params:
-						{
-							fullscreen: true
-						}
-					}
-				];
-			}
-			else
-			{
-				menu =
-				[
-					{
-						icon: 'fa-solid fa-desktop',
-						text: 'Server',
-						href: 'start.js',
-						params:
-						{
-							fullscreen: true
-						}
-					}
-				];
-			}
-		}
-		else
-		{
-			menu =
-			[
-				{
-					icon: 'fa-solid fa-power-off',
-					text: 'Launch default',
-					href: 'start.js',
-					params:
-					{
-						run: true,
-						fullscreen: true,
-						mode: 'Default'
-					}
-				},
-				{
-					icon: 'fa-solid fa-gauge',
-					text: 'Launch benchmark',
-					href: 'start.js',
-					params:
-					{
-						run: true,
-						fullscreen: true,
-						mode: 'Benchmark'
-					}
-				},
-				{
-					icon: 'fa-solid fa-camera',
-					text: 'Launch webcam',
-					href: 'start.js',
-					params:
-					{
-						run: true,
-						fullscreen: true,
-						mode: 'Webcam'
-					}
-				}
-			];
-		}
-		menu = menu.concat(
+		return menu;
+	}
+
+	if (!await kernel.running(__dirname, 'run.js') && !await kernel.running(__dirname, 'install.js') && !await kernel.running(__dirname, 'update.js') && !await kernel.running(__dirname, 'reset.js'))
+	{
 		[
+			[ 'fa-solid fa-power-off', 'Run Default', 'Default' ],
+			[ 'fa-solid fa-gauge', 'Run Benchmark', 'Benchmark' ],
+			[ 'fa-solid fa-robot', 'Run Jobs', 'Jobs' ],
+			[ 'fa-solid fa-camera', 'Run Webcam', 'Webcam' ]
+		]
+		.forEach(([ icon, text, mode ]) =>
+		{
+			menu.push(
 			{
-				icon: 'fa-solid fa-rotate',
-				text: 'Update',
-				href: 'update.js',
+				icon,
+				text,
+				href: 'run.js',
+				params:
+				{
+					run: true,
+					fullscreen: true,
+					mode
+				}
+			});
+		});
+	}
+	if (await kernel.running(__dirname, 'run.js'))
+	{
+		const memory = await kernel.memory.local[path.resolve(__dirname, 'run.js')];
+
+		if (memory && memory.url && memory.mode)
+		{
+			menu.push(
+			{
+				icon: 'fa-solid fa-rocket',
+				text: 'UI (' + memory.mode + ')',
+				href: memory.url,
 				params:
 				{
 					run: true,
 					fullscreen: true
 				}
-			},
+			});
+		}
+		menu.push(
+		{
+			icon: 'fa-solid fa-desktop',
+			text: 'CLI',
+			href: 'run.js',
+			params:
 			{
-				icon: 'fa-solid fa-plug',
-				text: 'Install',
-				href: 'install.js',
-				params:
-				{
-					run: true,
-					fullscreen: true
-				}
-			},
-			{
-				icon: 'fa-regular fa-circle-xmark',
-				text: 'Reset',
-				href: 'reset.js',
-				params:
-				{
-					run: true,
-					fullscreen: true
-				}
+				run: true,
+				fullscreen: true
 			}
-		]);
+		});
 	}
 	else
 	{
-		menu =
 		[
+			[ 'fa-solid fa-plug', 'Install', 'install.js' ],
+			[ 'fa-solid fa-rotate', 'Update', 'update.js' ],
+			[ 'fa-regular fa-circle-xmark', 'Reset', 'reset.js' ]
+		]
+		.forEach(([ icon, text, href ]) =>
+		{
+			menu.push(
 			{
-				icon: 'fa-solid fa-plug',
-				text: 'Install',
-				href: 'install.js',
+				icon,
+				text,
+				href,
 				params:
 				{
 					run: true,
 					fullscreen: true
 				}
-			}
-		];
+			});
+		});
 	}
 	return menu;
 };
