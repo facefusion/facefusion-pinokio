@@ -2,26 +2,24 @@ const path = require('path');
 
 module.exports = async kernel =>
 {
+	const menu = [];
+
 	if (!await kernel.exists(__dirname, 'facefusion', '.git'))
 	{
-		const menu =
-		[
+		menu.push(
+		{
+			icon: 'fa-solid fa-plug',
+			text: 'Install',
+			href: 'install.js',
+			params:
 			{
-				icon: 'fa-solid fa-plug',
-				text: 'Install',
-				href: 'install.js',
-				params:
-				{
-					run: true,
-					fullscreen: true
-				}
+				run: true,
+				fullscreen: true
 			}
-		];
+		});
 
 		return menu;
 	}
-
-	const menu = [];
 
 	if (await kernel.running(__dirname, 'run.js'))
 	{
