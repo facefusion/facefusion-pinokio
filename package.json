@@ -1,12 +1,12 @@
 {
 	"name": "facefusion-pinokio",
-	"description": "Next generation face swapper and enhancer",
-	"version": "2.6.1",
+	"description": "Industry leading face manipulation platform",
+	"version": "3.0.0",
 	"license": "MIT",
 	"devDependencies":
 	{
 		"@isnotdefined/eslint-config": "9.8.0",
-		"eslint": "8.56.0"
+		"eslint": "8.57.1"
 	},
 	"scripts":
 	{

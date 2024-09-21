@@ -5,9 +5,10 @@ module.exports = () =>
 		daemon: true,
 		cmd:
 		{
-			Default: 'python run.py',
-			Benchmark: 'python run.py --ui-layouts benchmark',
-			Webcam: 'python run.py --ui-layouts webcam'
+			Default: 'python facefusion.py run',
+			Benchmark: 'python facefusion.py run --ui-layouts benchmark',
+			Jobs: 'python facefusion.py run --ui-layouts jobs',
+			Webcam: 'python facefusion.py run --ui-layouts webcam'
 		},
 		run:
 		[

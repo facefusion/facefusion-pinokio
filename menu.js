@@ -2,129 +2,9 @@ const path = require('path');
 
 module.exports = async kernel =>
 {
-	const hasInstall = await kernel.exists(__dirname, 'facefusion') && !await kernel.running(__dirname, 'install.js');
-
-	let menu = [];
-
-	if (hasInstall)
+	if (!kernel.exists(__dirname, 'facefusion'))
 	{
-		if (kernel.running(__dirname, 'start.js'))
-		{
-			const memory = kernel.memory.local[path.resolve(__dirname, 'start.js')];
-
-			if (memory && memory.url && memory.mode)
-			{
-				menu =
-				[
-					{
-						icon: 'fa-solid fa-rocket',
-						text: 'Open session',
-						href: memory.url,
-						target: '_blank'
-					},
-					{
-						icon: 'fa-solid fa-desktop',
-						text: 'Server (' + memory.mode + ')',
-						href: 'start.js',
-						params:
-						{
-							fullscreen: true
-						}
-					}
-				];
-			}
-			else
-			{
-				menu =
-				[
-					{
-						icon: 'fa-solid fa-desktop',
-						text: 'Server',
-						href: 'start.js',
-						params:
-						{
-							fullscreen: true
-						}
-					}
-				];
-			}
-		}
-		else
-		{
-			menu =
-			[
-				{
-					icon: 'fa-solid fa-power-off',
-					text: 'Launch default',
-					href: 'start.js',
-					params:
-					{
-						run: true,
-						fullscreen: true,
-						mode: 'Default'
-					}
-				},
-				{
-					icon: 'fa-solid fa-gauge',
-					text: 'Launch benchmark',
-					href: 'start.js',
-					params:
-					{
-						run: true,
-						fullscreen: true,
-						mode: 'Benchmark'
-					}
-				},
-				{
-					icon: 'fa-solid fa-camera',
-					text: 'Launch webcam',
-					href: 'start.js',
-					params:
-					{
-						run: true,
-						fullscreen: true,
-						mode: 'Webcam'
-					}
-				}
-			];
-		}
-		menu = menu.concat(
-		[
-			{
-				icon: 'fa-solid fa-rotate',
-				text: 'Update',
-				href: 'update.js',
-				params:
-				{
-					run: true,
-					fullscreen: true
-				}
-			},
-			{
-				icon: 'fa-solid fa-plug',
-				text: 'Install',
-				href: 'install.js',
-				params:
-				{
-					run: true,
-					fullscreen: true
-				}
-			},
-			{
-				icon: 'fa-regular fa-circle-xmark',
-				text: 'Reset',
-				href: 'reset.js',
-				params:
-				{
-					run: true,
-					fullscreen: true
-				}
-			}
-		]);
-	}
-	else
-	{
-		menu =
+		const menu =
 		[
 			{
 				icon: 'fa-solid fa-plug',
@@ -137,6 +17,123 @@ module.exports = async kernel =>
 				}
 			}
 		];
+
+		return menu;
 	}
+
+	[
+		[ 'Installing', 'install.js' ],
+		[ 'Updating', 'update.js' ],
+		[ 'Resetting', 'reset.js' ]
+	]
+	.forEach(([ text, href ]) =>
+	{
+		if (kernel.running(__dirname, script))
+		{
+			const menu =
+			[
+				{
+					icon: 'fa-solid fa-spinner',
+					text,
+					href,
+					params:
+					{
+						run: true,
+						fullscreen: true
+					}
+				}
+			];
+
+			return menu;
+		}
+	});
+
+	const menu = [];
+
+	if (kernel.running(__dirname, 'start.js'))
+	{
+		const start_path = path.resolve(__dirname, 'start.js');
+		const memory = kernel.memory.local[start_path];
+
+		if (memory && memory.url && memory.mode)
+		{
+			menu.concat(
+			[
+				{
+					icon: 'fa-solid fa-rocket',
+					text: 'Open Session',
+					href: memory.url
+				},
+				{
+					icon: 'fa-solid fa-desktop',
+					text: 'Server (' + memory.mode + ')',
+					href: 'start.js',
+					params:
+					{
+						fullscreen: true
+					}
+				}
+			]);
+		}
+		else
+		{
+			menu.concat(
+			[
+				{
+					icon: 'fa-solid fa-desktop',
+					text: 'Server',
+					href: 'start.js',
+					params:
+					{
+						fullscreen: true
+					}
+				}
+			]);
+		}
+	}
+
+	[
+		[ 'fa-solid fa-plug', 'Install', 'install.js' ],
+		[ 'fa-solid fa-rotate', 'Update', 'update.js' ],
+		[ 'fa-regular fa-circle-xmark', 'Reset', 'reset.js' ]
+	]
+	.forEach(([ icon, text, href ]) =>
+	{
+		menu.concat(
+		[
+			{
+				icon,
+				text,
+				href,
+				params:
+				{
+					run: true,
+					fullscreen: true
+				}
+			}
+		]);
+	});
+
+	[
+		[ 'fa-solid fa-power-off', 'Launch Default', 'Default' ],
+		[ 'fa-solid fa-gauge', 'Launch Benchmark', 'Benchmark' ],
+		[ 'fa-solid fa-robot', 'Launch Jobs', 'Jobs' ],
+		[ 'fa-solid fa-camera', 'Launch Webcam', 'Webcam' ]
+	]
+	.forEach(([ icon, text, mode ]) =>
+	{
+		menu.push({
+			icon,
+			text,
+			href: 'start.js',
+			params:
+			{
+				run: true,
+				fullscreen: true,
+				mode
+			}
+		});
+	});
+
 	return menu;
 };
