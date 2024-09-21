@@ -21,6 +21,30 @@ module.exports = async kernel =>
 		return menu;
 	}
 
+	if (!await kernel.running(__dirname, 'run.js') && !await kernel.running(__dirname, 'install.js') && !await kernel.running(__dirname, 'update.js') && !await kernel.running(__dirname, 'reset.js'))
+	{
+		[
+			[ 'fa-solid fa-power-off', 'Run Default', 'Default' ],
+			[ 'fa-solid fa-gauge', 'Run Benchmark', 'Benchmark' ],
+			[ 'fa-solid fa-robot', 'Run Jobs', 'Jobs' ],
+			[ 'fa-solid fa-camera', 'Run Webcam', 'Webcam' ]
+		]
+		.forEach(([ icon, text, mode ]) =>
+		{
+			menu.push(
+			{
+				icon,
+				text,
+				href: 'run.js',
+				params:
+				{
+					run: true,
+					fullscreen: true,
+					mode
+				}
+			});
+		});
+	}
 	if (await kernel.running(__dirname, 'run.js'))
 	{
 		const memory = await kernel.memory.local[path.resolve(__dirname, 'run.js')];
@@ -53,28 +77,6 @@ module.exports = async kernel =>
 	}
 	else
 	{
-		[
-			[ 'fa-solid fa-power-off', 'Run Default', 'Default' ],
-			[ 'fa-solid fa-gauge', 'Run Benchmark', 'Benchmark' ],
-			[ 'fa-solid fa-robot', 'Run Jobs', 'Jobs' ],
-			[ 'fa-solid fa-camera', 'Run Webcam', 'Webcam' ]
-		]
-		.forEach(([ icon, text, mode ]) =>
-		{
-			menu.push(
-			{
-				icon,
-				text,
-				href: 'run.js',
-				params:
-				{
-					run: true,
-					fullscreen: true,
-					mode
-				}
-			});
-		});
-
 		[
 			[ 'fa-solid fa-plug', 'Install', 'install.js' ],
 			[ 'fa-solid fa-rotate', 'Update', 'update.js' ],
