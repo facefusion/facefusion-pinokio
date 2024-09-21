@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = async kernel =>
+module.exports = kernel =>
 {
 	if (!kernel.exists(__dirname, 'facefusion'))
 	{
@@ -22,18 +22,18 @@ module.exports = async kernel =>
 	}
 
 	[
-		[ 'Installing', 'install.js' ],
-		[ 'Updating', 'update.js' ],
-		[ 'Resetting', 'reset.js' ]
+		[ 'fa-solid fa-plug', 'Installing', 'install.js' ],
+		[ 'fa-solid fa-rotate', 'Updating', 'update.js' ],
+		[ 'fa-regular fa-circle-xmark', 'Resetting', 'reset.js' ]
 	]
-	.forEach(([ text, href ]) =>
+	.forEach(([ icon, text, href ]) =>
 	{
-		if (kernel.running(__dirname, script))
+		if (kernel.running(__dirname, href))
 		{
 			const menu =
 			[
 				{
-					icon: 'fa-solid fa-spinner',
+					icon,
 					text,
 					href,
 					params:
@@ -50,9 +50,9 @@ module.exports = async kernel =>
 
 	const menu = [];
 
-	if (kernel.running(__dirname, 'start.js'))
+	if (kernel.running(__dirname, 'run.js'))
 	{
-		const start_path = path.resolve(__dirname, 'start.js');
+		const start_path = path.resolve(__dirname, 'run.js');
 		const memory = kernel.memory.local[start_path];
 
 		if (memory && memory.url && memory.mode)
@@ -66,8 +66,8 @@ module.exports = async kernel =>
 				},
 				{
 					icon: 'fa-solid fa-desktop',
-					text: 'Server (' + memory.mode + ')',
-					href: 'start.js',
+					text: 'Running (' + memory.mode + ')',
+					href: 'run.js',
 					params:
 					{
 						fullscreen: true
@@ -77,20 +77,40 @@ module.exports = async kernel =>
 		}
 		else
 		{
-			menu.concat(
-			[
+			menu.push(
+			{
+				icon: 'fa-solid fa-desktop',
+				text: 'Run',
+				href: 'run.js',
+				params:
 				{
-					icon: 'fa-solid fa-desktop',
-					text: 'Server',
-					href: 'start.js',
-					params:
-					{
-						fullscreen: true
-					}
+					fullscreen: true
 				}
-			]);
+			});
 		}
 	}
+
+	[
+		[ 'fa-solid fa-power-off', 'Run Default', 'Default' ],
+		[ 'fa-solid fa-gauge', 'Run Benchmark', 'Benchmark' ],
+		[ 'fa-solid fa-robot', 'Run Jobs', 'Jobs' ],
+		[ 'fa-solid fa-camera', 'Run Webcam', 'Webcam' ]
+	]
+	.forEach(([ icon, text, mode ]) =>
+	{
+		menu.push(
+		{
+			icon,
+			text,
+			href: 'run.js',
+			params:
+			{
+				run: true,
+				fullscreen: true,
+				mode
+			}
+		});
+	});
 
 	[
 		[ 'fa-solid fa-plug', 'Install', 'install.js' ],
@@ -99,38 +119,15 @@ module.exports = async kernel =>
 	]
 	.forEach(([ icon, text, href ]) =>
 	{
-		menu.concat(
-		[
-			{
-				icon,
-				text,
-				href,
-				params:
-				{
-					run: true,
-					fullscreen: true
-				}
-			}
-		]);
-	});
-
-	[
-		[ 'fa-solid fa-power-off', 'Launch Default', 'Default' ],
-		[ 'fa-solid fa-gauge', 'Launch Benchmark', 'Benchmark' ],
-		[ 'fa-solid fa-robot', 'Launch Jobs', 'Jobs' ],
-		[ 'fa-solid fa-camera', 'Launch Webcam', 'Webcam' ]
-	]
-	.forEach(([ icon, text, mode ]) =>
-	{
-		menu.push({
+		menu.push(
+		{
 			icon,
 			text,
-			href: 'start.js',
+			href,
 			params:
 			{
 				run: true,
-				fullscreen: true,
-				mode
+				fullscreen: true
 			}
 		});
 	});
