@@ -25,7 +25,7 @@ module.exports = async kernel =>
 	{
 		[
 			[ 'fa-solid fa-power-off', 'Run Default', 'Default' ],
-			[ 'fa-solid fa-robot', 'Run Default With Jobs', 'DefaultWithJobs' ],
+			[ 'fa-solid fa-robot', 'Run Default+Jobs', 'Default+Jobs' ],
 			[ 'fa-solid fa-gauge', 'Run Benchmark', 'Benchmark' ],
 			[ 'fa-solid fa-camera', 'Run Webcam', 'Webcam' ]
 		]

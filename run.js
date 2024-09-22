@@ -5,10 +5,10 @@ module.exports = () =>
 		daemon: true,
 		cmd:
 		{
-			Default: 'python facefusion.py run',
-			DefaultWithJobs: 'python facefusion.py run --ui-layouts default jobs',
-			Benchmark: 'python facefusion.py run --ui-layouts benchmark',
-			Webcam: 'python facefusion.py run --ui-layouts webcam'
+			'Default': 'python facefusion.py run',
+			'Default+Jobs': 'python facefusion.py run --ui-layouts default jobs',
+			'Benchmark': 'python facefusion.py run --ui-layouts benchmark',
+			'Webcam': 'python facefusion.py run --ui-layouts webcam'
 		},
 		run:
 		[
