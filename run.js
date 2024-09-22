@@ -5,10 +5,10 @@ module.exports = () =>
 		daemon: true,
 		cmd:
 		{
-			Default: 'python facefusion.py run',
-			Benchmark: 'python facefusion.py run --ui-layouts benchmark',
-			Jobs: 'python facefusion.py run --ui-layouts jobs',
-			Webcam: 'python facefusion.py run --ui-layouts webcam'
+			'Default': 'python facefusion.py run',
+			'Default+Jobs': 'python facefusion.py run --ui-layouts default jobs',
+			'Benchmark': 'python facefusion.py run --ui-layouts benchmark',
+			'Webcam': 'python facefusion.py run --ui-layouts webcam'
 		},
 		run:
 		[
@@ -27,7 +27,7 @@ module.exports = () =>
 					path: 'facefusion',
 					conda:
 					{
-						name: 'facefusion'
+						path: '.env'
 					},
 					on:
 					[
@@ -58,7 +58,7 @@ module.exports = () =>
 				params:
 				{
 					uri: '{{ local.url }}',
-					name: 'Share local'
+					name: 'Share Local'
 				}
 			}
 		]

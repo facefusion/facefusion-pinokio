@@ -32,4 +32,3 @@ module.exports = () =>
 
 	return config;
 };
-

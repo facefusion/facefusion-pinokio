@@ -4,7 +4,7 @@ module.exports = async kernel =>
 {
 	const menu = [];
 
-	if (!await kernel.exists(__dirname, 'facefusion', '.git'))
+	if (!await kernel.exists(__dirname, '.env'))
 	{
 		menu.push(
 		{
@@ -25,8 +25,8 @@ module.exports = async kernel =>
 	{
 		[
 			[ 'fa-solid fa-power-off', 'Run Default', 'Default' ],
+			[ 'fa-solid fa-robot', 'Run Default+Jobs', 'Default+Jobs' ],
 			[ 'fa-solid fa-gauge', 'Run Benchmark', 'Benchmark' ],
-			[ 'fa-solid fa-robot', 'Run Jobs', 'Jobs' ],
 			[ 'fa-solid fa-camera', 'Run Webcam', 'Webcam' ]
 		]
 		.forEach(([ icon, text, mode ]) =>
