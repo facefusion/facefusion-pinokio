@@ -56,19 +56,11 @@ module.exports = async kernel =>
 				method: 'shell.run',
 				params:
 				{
-					message: 'conda install conda-forge::cuda-runtime=12.4.1 cudnn=9.2.1.18 --yes',
-					conda:
-					{
-						path: path.resolve(__dirname, '.env')
-					}
-				}
-			},
-			{
-				when: '{{ gpu === "nvidia" }}',
-				method: 'shell.run',
-				params:
-				{
-					message: 'pip install tensorrt==10.4.0 --extra-index-url https://pypi.nvidia.com',
+					message:
+					[
+						'conda install conda-forge::cuda-runtime=12.4.1 cudnn=9.2.1.18 --yes',
+						'pip install tensorrt==10.4.0 --extra-index-url https://pypi.nvidia.com'
+					],
 					conda:
 					{
 						path: path.resolve(__dirname, '.env')
