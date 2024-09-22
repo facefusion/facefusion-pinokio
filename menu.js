@@ -4,7 +4,7 @@ module.exports = async kernel =>
 {
 	const menu = [];
 
-	if (!await kernel.exists(__dirname, 'facefusion', '.git'))
+	if (!await kernel.exists(__dirname, 'facefusion', '.env'))
 	{
 		menu.push(
 		{
