@@ -1,3 +1,5 @@
+const path = require('path');
+
 function install(kernel)
 {
 	const { platform, gpu } = kernel;
@@ -45,7 +47,7 @@ module.exports = async kernel =>
 					message: 'conda install conda-forge::openvino=2024.3.0 --yes',
 					conda:
 					{
-						path: '.env'
+						path: path.resolve(__dirname, '.env')
 					}
 				}
 			},
@@ -57,7 +59,7 @@ module.exports = async kernel =>
 					message: 'conda install conda-forge::cuda-runtime=12.4.1 cudnn=9.2.1.18 --yes',
 					conda:
 					{
-						path: '.env'
+						path: path.resolve(__dirname, '.env')
 					}
 				}
 			},
@@ -69,7 +71,7 @@ module.exports = async kernel =>
 					message: 'pip install tensorrt==10.4.0 --extra-index-url https://pypi.nvidia.com --yes',
 					conda:
 					{
-						path: '.env'
+						path: path.resolve(__dirname, '.env')
 					}
 				}
 			},
@@ -85,7 +87,7 @@ module.exports = async kernel =>
 					},
 					conda:
 					{
-						path: '.env'
+						path: path.resolve(__dirname, '.env')
 					}
 				}
 			},

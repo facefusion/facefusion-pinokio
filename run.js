@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = () =>
 {
 	const config =
@@ -27,7 +29,7 @@ module.exports = () =>
 					path: 'facefusion',
 					conda:
 					{
-						path: '.env'
+						path: path.resolve(__dirname, '.env')
 					},
 					on:
 					[

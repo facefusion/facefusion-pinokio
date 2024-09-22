@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = () =>
 {
 	const config =
@@ -15,7 +17,7 @@ module.exports = () =>
 				method: 'fs.rm',
 				params:
 				{
-					'path': '.env'
+					path: path.resolve(__dirname, '.env')
 				}
 			}
 		]

@@ -4,7 +4,7 @@ module.exports = async kernel =>
 {
 	const menu = [];
 
-	if (!await kernel.exists(__dirname, '.env'))
+	if (!await kernel.exists(path.resolve(__dirname, '.env')))
 	{
 		menu.push(
 		{
