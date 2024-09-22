@@ -62,6 +62,18 @@ module.exports = async kernel =>
 				}
 			},
 			{
+				when: '{{ gpu === "nvidia" }}',
+				method: 'shell.run',
+				params:
+				{
+					message: 'pip install tensorrt==10.4.0 --extra-index-url https://pypi.nvidia.com --yes',
+					conda:
+					{
+						path: '.env'
+					}
+				}
+			},
+			{
 				method: 'shell.run',
 				params:
 				{
