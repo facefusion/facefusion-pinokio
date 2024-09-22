@@ -6,8 +6,8 @@ module.exports = () =>
 		cmd:
 		{
 			Default: 'python facefusion.py run',
+			DefaultWithJobs: 'python facefusion.py run --ui-layouts default jobs',
 			Benchmark: 'python facefusion.py run --ui-layouts benchmark',
-			Jobs: 'python facefusion.py run --ui-layouts jobs',
 			Webcam: 'python facefusion.py run --ui-layouts webcam'
 		},
 		run:
@@ -58,7 +58,7 @@ module.exports = () =>
 				params:
 				{
 					uri: '{{ local.url }}',
-					name: 'Share local'
+					name: 'Share Local'
 				}
 			}
 		]
