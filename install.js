@@ -81,10 +81,6 @@ module.exports = async kernel =>
 				{
 					message: install(kernel),
 					path: 'facefusion',
-					env:
-					{
-						PYTHONNOUSERSITE: 'True'
-					},
 					conda:
 					{
 						path: path.resolve(__dirname, '.env')
