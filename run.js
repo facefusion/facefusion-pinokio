@@ -27,7 +27,7 @@ module.exports = () =>
 					path: 'facefusion',
 					conda:
 					{
-						name: 'facefusion'
+						path: 'facefusion/.env'
 					},
 					on:
 					[

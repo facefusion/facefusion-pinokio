@@ -45,7 +45,7 @@ module.exports = async kernel =>
 					message: 'conda install conda-forge::openvino=2024.3.0 --yes',
 					conda:
 					{
-						name: 'facefusion'
+						path: 'facefusion/.env'
 					}
 				}
 			},
@@ -57,7 +57,7 @@ module.exports = async kernel =>
 					message: 'conda install conda-forge::cuda-runtime=12.4.1 cudnn=9.2.1.18 --yes',
 					conda:
 					{
-						name: 'facefusion'
+						path: 'facefusion/.env'
 					}
 				}
 			},
@@ -73,7 +73,7 @@ module.exports = async kernel =>
 					},
 					conda:
 					{
-						name: 'facefusion'
+						path: 'facefusion/.env'
 					}
 				}
 			},
