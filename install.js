@@ -4,22 +4,19 @@ function install(kernel)
 {
 	const { platform, gpu } = kernel;
 
-	if (gpu === 'amd')
+	if (platform === 'linux' && gpu === 'amd')
 	{
-		if (platform === 'linux')
-		{
-			return 'python install.py --onnxruntime rocm';
-		}
-		if (platform === 'win32')
-		{
-			return 'python install.py --onnxruntime directml';
-		}
+		return 'python install.py --onnxruntime rocm';
 	}
-	if (gpu === 'intel')
+	if (platform === 'win32' && gpu === 'amd')
+	{
+		return 'python install.py --onnxruntime directml';
+	}
+	if (platform === 'win32' && gpu === 'intel')
 	{
 		return 'python install.py --onnxruntime openvino';
 	}
-	if (gpu === 'nvidia')
+	if ((platform === 'linux' || platform === 'win32') && gpu === 'nvidia')
 	{
 		return 'python install.py --onnxruntime cuda';
 	}
@@ -40,7 +37,7 @@ module.exports = async kernel =>
 				}
 			},
 			{
-				when: '{{ gpu === "intel" }}',
+				when: '{{ (platform === "linux" || platform === "win32") && gpu === "intel" }}',
 				method: 'shell.run',
 				params:
 				{
@@ -52,7 +49,7 @@ module.exports = async kernel =>
 				}
 			},
 			{
-				when: '{{ gpu === "nvidia" }}',
+				when: '{{ (platform === "linux" || platform === "win32") && gpu === "nvidia" }}',
 				method: 'shell.run',
 				params:
 				{
