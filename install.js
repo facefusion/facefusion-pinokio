@@ -12,7 +12,7 @@ function install(kernel)
 	{
 		return 'python install.py --onnxruntime directml';
 	}
-	if (platform === 'win32' && gpu === 'intel')
+	if ((platform === 'linux' || platform === 'win32') && gpu === 'intel')
 	{
 		return 'python install.py --onnxruntime openvino';
 	}
