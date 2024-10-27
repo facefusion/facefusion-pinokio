@@ -33,7 +33,7 @@ module.exports = async kernel =>
 				method: 'shell.run',
 				params:
 				{
-					message: 'git clone https://github.com/facefusion/facefusion --branch 3.0.0 --single-branch'
+					message: 'git clone https://github.com/facefusion/facefusion --branch 3.0.1 --single-branch'
 				}
 			},
 			{
@@ -56,7 +56,7 @@ module.exports = async kernel =>
 					message:
 					[
 						'conda install conda-forge::cuda-runtime=12.4.1 cudnn=9.2.1.18 --yes',
-						'pip install tensorrt==10.4.0 --extra-index-url https://pypi.nvidia.com'
+						'pip install tensorrt==10.5.0 --extra-index-url https://pypi.nvidia.com'
 					],
 					conda:
 					{
