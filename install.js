@@ -37,13 +37,6 @@ module.exports = async kernel =>
 				}
 			},
 			{
-				method: 'shell.run',
-				params:
-				{
-					message: 'conda install conda-forge::ffmpeg=7.1.0 --yes'
-				}
-			},
-			{
 				when: '{{ (platform === "linux" || platform === "win32") && gpu === "intel" }}',
 				method: 'shell.run',
 				params:
