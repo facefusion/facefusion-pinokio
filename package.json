@@ -5,12 +5,12 @@
 	"license": "MIT",
 	"devDependencies":
 	{
-		"@isnotdefined/eslint-config": "9.8.0",
-		"eslint": "8.57.0"
+		"@isnotdefined/eslint-config": "10.0.0",
+		"eslint": "9.19.0"
 	},
 	"scripts":
 	{
-		"lint": "eslint . --ext .js",
+		"lint": "eslint .",
 		"fix": "npm run lint -- --fix"
 	}
 }
