@@ -37,6 +37,17 @@ module.exports = async kernel =>
 				}
 			},
 			{
+				method: 'shell.run',
+				params:
+				{
+					message: 'conda install conda-forge::ffmpeg=5.1.2 --yes',
+					conda:
+					{
+						path: path.resolve(__dirname, '.env')
+					}
+				}
+			},
+			{
 				when: '{{ (platform === "linux" || platform === "win32") && gpu === "intel" }}',
 				method: 'shell.run',
 				params:
