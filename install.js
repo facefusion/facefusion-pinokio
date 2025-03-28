@@ -40,7 +40,7 @@ module.exports = async kernel =>
 				method: 'shell.run',
 				params:
 				{
-					message: 'conda install conda-forge::ffmpeg=5.1.2 --yes',
+					message: 'conda install conda-forge::ffmpeg=7.1.1 conda-forge::libvorbis=1.3.7 --yes',
 					conda:
 					{
 						path: path.resolve(__dirname, '.env')
