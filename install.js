@@ -33,7 +33,7 @@ module.exports = async kernel =>
 				method: 'shell.run',
 				params:
 				{
-					message: 'git clone https://github.com/facefusion/facefusion --branch 3.1.2 --single-branch'
+					message: 'git clone https://github.com/facefusion/facefusion --branch 3.2.0 --single-branch'
 				}
 			},
 			{
@@ -52,7 +52,7 @@ module.exports = async kernel =>
 				method: 'shell.run',
 				params:
 				{
-					message: 'conda install conda-forge::openvino=2025.0.0 --yes',
+					message: 'conda install conda-forge::openvino=2025.1.0 --yes',
 					conda:
 					{
 						path: path.resolve(__dirname, '.env')
@@ -66,8 +66,8 @@ module.exports = async kernel =>
 				{
 					message:
 					[
-						'conda install conda-forge::cuda-runtime=12.8.0 conda-forge::cudnn=9.7.1.26 --yes',
-						'pip install tensorrt==10.8.0.43 --extra-index-url https://pypi.nvidia.com'
+						'conda install conda-forge::cuda-runtime=12.8.1 conda-forge::cudnn=9.8.0.87 --yes',
+						'pip install tensorrt==10.9.0.34 --extra-index-url https://pypi.nvidia.com'
 					],
 					conda:
 					{
