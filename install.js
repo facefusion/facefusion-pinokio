@@ -66,8 +66,8 @@ module.exports = async kernel =>
 				{
 					message:
 					[
-						'conda install nvidia/label/cuda-12.9.0::cuda-runtime nvidia/label/cudnn-9.10.0::cudnn --yes',
-						'pip install tensorrt==10.11.0.33 --extra-index-url https://pypi.nvidia.com'
+						'conda install nvidia/label/cuda-12.9.1::cuda-runtime nvidia/label/cudnn-9.10.0::cudnn --yes',
+						'pip install tensorrt==10.12.0.36 --extra-index-url https://pypi.nvidia.com'
 					],
 					conda:
 					{
