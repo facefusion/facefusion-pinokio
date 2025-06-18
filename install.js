@@ -40,7 +40,7 @@ module.exports = async kernel =>
 				method: 'shell.run',
 				params:
 				{
-					message: 'conda install conda-forge::ffmpeg=7.1.1 conda-forge::libvorbis=1.3.7 --yes',
+					message: 'conda install conda-forge::ffmpeg=7.0.2 conda-forge::libvorbis=1.3.7 --yes',
 					conda:
 					{
 						path: path.resolve(__dirname, '.env')
@@ -66,8 +66,8 @@ module.exports = async kernel =>
 				{
 					message:
 					[
-						'conda install conda-forge::cuda-runtime=12.8.1 conda-forge::cudnn=9.8.0.87 --yes',
-						'pip install tensorrt==10.9.0.34 --extra-index-url https://pypi.nvidia.com'
+						'conda install nvidia/label/cuda-12.9.0::cuda-runtime nvidia/label/cudnn-9.10.0::cudnn --yes',
+						'pip install tensorrt==10.11.0.33 --extra-index-url https://pypi.nvidia.com'
 					],
 					conda:
 					{
