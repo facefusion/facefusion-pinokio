@@ -6,21 +6,21 @@ function install(kernel)
 
 	if (platform === 'linux' && gpu === 'amd')
 	{
-		return 'python install.py --onnxruntime rocm || exit 0';
+		return 'python install.py --onnxruntime rocm';
 	}
 	if (platform === 'win32' && gpu === 'amd')
 	{
-		return 'python install.py --onnxruntime directml || exit 0';
+		return 'python install.py --onnxruntime directml';
 	}
 	if ((platform === 'linux' || platform === 'win32') && gpu === 'intel')
 	{
-		return 'python install.py --onnxruntime openvino || exit 0';
+		return 'python install.py --onnxruntime openvino';
 	}
 	if ((platform === 'linux' || platform === 'win32') && gpu === 'nvidia')
 	{
-		return 'python install.py --onnxruntime cuda || exit 0';
+		return 'python install.py --onnxruntime cuda';
 	}
-	return 'python install.py --onnxruntime default || exit 0';
+	return 'python install.py --onnxruntime default';
 }
 
 module.exports = async kernel =>
@@ -97,7 +97,7 @@ module.exports = async kernel =>
 				method: 'shell.run',
 				params:
 				{
-					message: install(kernel),
+					message: install(kernel) + ' || exit 0',
 					path: 'facefusion',
 					conda:
 					{
