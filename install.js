@@ -47,6 +47,17 @@ module.exports = async kernel =>
 				method: 'shell.run',
 				params:
 				{
+					message: 'conda install python=3.12 --yes',
+					conda:
+					{
+						path: path.resolve(__dirname, '.env')
+					}
+				}
+			},
+			{
+				method: 'shell.run',
+				params:
+				{
 					message: 'conda install conda-forge::ffmpeg=7.0.2 conda-forge::libvorbis=1.3.7 --yes',
 					conda:
 					{
