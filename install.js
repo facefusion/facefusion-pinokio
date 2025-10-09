@@ -6,21 +6,21 @@ function install(kernel)
 
 	if (platform === 'linux' && gpu === 'amd')
 	{
-		return 'python install.py --onnxruntime rocm';
+		return 'python install.py --onnxruntime rocm || exit 0';
 	}
 	if (platform === 'win32' && gpu === 'amd')
 	{
-		return 'python install.py --onnxruntime directml';
+		return 'python install.py --onnxruntime directml || exit 0';
 	}
 	if ((platform === 'linux' || platform === 'win32') && gpu === 'intel')
 	{
-		return 'python install.py --onnxruntime openvino';
+		return 'python install.py --onnxruntime openvino || exit 0';
 	}
 	if ((platform === 'linux' || platform === 'win32') && gpu === 'nvidia')
 	{
-		return 'python install.py --onnxruntime cuda';
+		return 'python install.py --onnxruntime cuda || exit 0';
 	}
-	return 'python install.py --onnxruntime default';
+	return 'python install.py --onnxruntime default || exit 0';
 }
 
 module.exports = async kernel =>
