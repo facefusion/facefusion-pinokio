@@ -97,12 +97,19 @@ module.exports = async kernel =>
 				method: 'shell.run',
 				params:
 				{
-					message: install(kernel) + ' || exit 0',
+					message: install(kernel),
 					path: 'facefusion',
 					conda:
 					{
 						path: path.resolve(__dirname, '.env')
-					}
+					},
+					on:
+					[
+						{
+							event: '/error:/i',
+							break: false
+						}
+					]
 				}
 			},
 			{
