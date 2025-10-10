@@ -5,8 +5,8 @@
 	"license": "OpenRAIL-S",
 	"devDependencies":
 	{
-		"@isnotdefined/eslint-config": "10.1.0",
-		"eslint": "9.20.1"
+		"@isnotdefined/eslint-config": "10.6.0",
+		"eslint": "9.36.0"
 	},
 	"scripts":
 	{
