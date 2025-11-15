@@ -8,6 +8,15 @@ module.exports = () =>
 				method: 'shell.run',
 				params:
 				{
+					message: 'conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main'
+					message: 'conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r'
+					message: 'conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/sys2'
+				}
+			},
+			{
+				method: 'shell.run',
+				params:
+				{
 					'message': 'git pull'
 				}
 			},

@@ -40,7 +40,10 @@ module.exports = async kernel =>
 				method: 'shell.run',
 				params:
 				{
-					message: 'conda install conda=25.5.1 --yes'
+					message: 'conda install conda=25.9.1 --yes'
+					message: 'conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main'
+					message: 'conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r'
+					message: 'conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/sys2'
 				}
 			},
 			{
