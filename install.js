@@ -33,14 +33,17 @@ module.exports = async kernel =>
 				method: 'shell.run',
 				params:
 				{
-					message: 'git clone https://github.com/facefusion/facefusion --branch 3.4.2 --single-branch'
+					message: 'git clone https://github.com/facefusion/facefusion --branch 3.5.0 --single-branch'
 				}
 			},
 			{
 				method: 'shell.run',
 				params:
 				{
-					message: 'conda install conda=25.5.1 --yes'
+					message: 'conda install conda=25.9.1 --yes'
+					message: 'conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main'
+					message: 'conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r'
+					message: 'conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/sys2'
 				}
 			},
 			{

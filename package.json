@@ -1,7 +1,7 @@
 {
 	"name": "facefusion-pinokio",
 	"description": "Industry leading face manipulation platform",
-	"version": "3.4.2",
+	"version": "3.5.0",
 	"license": "OpenRAIL-S",
 	"devDependencies":
 	{
