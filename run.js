@@ -48,11 +48,11 @@ module.exports = () =>
 				}
 			},
 			{
-				method: 'browser.open',
+				method: 'web.open',
 				params:
 				{
 					uri: '{{ local.url }}',
-					target: '_blank'
+					target: '_top'
 				}
 			},
 			{
