@@ -6,7 +6,7 @@ function install(kernel)
 
 	if (platform === 'linux' && gpu === 'amd')
 	{
-		return 'python install.py --onnxruntime rocm';
+		return 'python install.py --onnxruntime migraphx';
 	}
 	if (platform === 'win32' && gpu === 'amd')
 	{

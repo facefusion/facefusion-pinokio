@@ -13,7 +13,7 @@ module.exports = () =>
 					'path': 'facefusion'
 				}
 			},
-{
+			{
 				method: 'fs.rm',
 				params:
 				{
