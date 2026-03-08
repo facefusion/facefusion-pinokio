@@ -51,8 +51,7 @@ module.exports = () =>
 				method: 'web.open',
 				params:
 				{
-					uri: '{{ local.url }}',
-					target: '_top'
+					uri: '{{ local.url }}'
 				}
 			},
 			{
