@@ -1,10 +1,8 @@
-const path = require('path');
-
-module.exports = async kernel =>
+module.exports = async (kernel, info) =>
 {
 	const menu = [];
 
-	if (!await kernel.exists(path.resolve(__dirname, '.env')))
+	if (!info.exists('.env'))
 	{
 		menu.push(
 		{
@@ -21,7 +19,7 @@ module.exports = async kernel =>
 		return menu;
 	}
 
-	if (!await kernel.running(__dirname, 'run.js') && !await kernel.running(__dirname, 'install.js') && !await kernel.running(__dirname, 'update.js') && !await kernel.running(__dirname, 'reset.js'))
+	if (!info.running('run.js') && !info.running('install.js') && !info.running('update.js') && !info.running('reset.js'))
 	{
 		[
 			[ 'fa-solid fa-power-off', 'Run Default', 'Default' ],
@@ -45,9 +43,9 @@ module.exports = async kernel =>
 			});
 		});
 	}
-	if (await kernel.running(__dirname, 'run.js'))
+	if (info.running('run.js'))
 	{
-		const memory = await kernel.memory.local[path.resolve(__dirname, 'run.js')];
+		const memory = info.local('run.js');
 
 		if (memory && memory.url && memory.mode)
 		{
