@@ -15,6 +15,14 @@ module.exports = () =>
 		run:
 		[
 			{
+				method: 'shell.run',
+				params:
+				{
+					message: 'git reset --hard',
+					path: 'facefusion'
+				}
+			},
+			{
 				method: 'local.set',
 				params:
 				{
