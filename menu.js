@@ -95,5 +95,6 @@ module.exports = async (kernel, info) =>
 			});
 		});
 	}
+
 	return menu;
 };

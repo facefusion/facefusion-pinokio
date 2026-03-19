@@ -52,22 +52,7 @@ module.exports = () =>
 				method: 'local.set',
 				params:
 				{
-					url: '{{ input.stdout.match(/(http:\\S+)/gi)[0] }}'
-				}
-			},
-			{
-				method: 'web.open',
-				params:
-				{
-					uri: '{{ local.url }}'
-				}
-			},
-			{
-				method: 'proxy.start',
-				params:
-				{
-					uri: '{{ local.url }}',
-					name: 'Share Local'
+					url: '{{ input.event[0] }}'
 				}
 			}
 		]
