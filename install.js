@@ -119,13 +119,6 @@ module.exports = async kernel =>
 					title: 'Installation completed',
 					description: 'Return to the dashboard to start FaceFusion.'
 				}
-			},
-			{
-				method: 'browser.open',
-				params:
-				{
-					uri: '/?selected=facefusion'
-				}
 			}
 		]
 	};
