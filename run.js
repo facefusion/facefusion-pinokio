@@ -15,18 +15,18 @@ module.exports = () =>
 		run:
 		[
 			{
-				method: 'shell.run',
-				params:
-				{
-					message: 'git reset --hard',
-					path: 'facefusion'
-				}
-			},
-			{
 				method: 'local.set',
 				params:
 				{
 					mode: '{{ input.mode }}'
+				}
+			},
+			{
+				method: 'shell.run',
+				params:
+				{
+					message: 'git reset --hard --quiet',
+					path: 'facefusion'
 				}
 			},
 			{
