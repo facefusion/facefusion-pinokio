@@ -25,7 +25,7 @@ module.exports = () =>
 				method: 'shell.run',
 				params:
 				{
-					message: 'git reset --hard --quiet',
+					message: 'git checkout --quiet -- src',
 					path: 'facefusion'
 				}
 			},
